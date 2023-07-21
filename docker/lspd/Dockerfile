@@ -1,5 +1,5 @@
 FROM golang:latest AS builder
-COPY ./docker/lspd/.env .
+COPY ./docker/lspd/.env.template .
 COPY ./docker/lspd/start.sh .
 RUN chmod +x ./start.sh
 RUN git clone https://github.com/breez/lspd
