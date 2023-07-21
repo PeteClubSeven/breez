@@ -4,6 +4,7 @@ COPY ./docker/lspd/start.sh .
 RUN chmod +x ./start.sh
 RUN git clone https://github.com/breez/lspd
 RUN cd lspd \
+    && git reset --hard 62890978748304519d8e82b83be8dfed5ef577bc \
     && go mod tidy \
     && go build .
 RUN go install github.com/joho/godotenv/cmd/godotenv@latest
