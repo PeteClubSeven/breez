@@ -81,7 +81,7 @@ func SignTransaction(info *data.AddressInfo, transaction *data.RawSlotSweepTrans
 	fetcher := txscript.NewMultiPrevOutFetcher(fetcherMap)
 	sigHashes := txscript.NewTxSigHashes(tx, fetcher)
 
-	// Since Satscard slots all use P2WPKH address we can sign UTXOs the same way
+	// Since Satscard slots all use P2WPKH addresses we can sign UTXOs the same way
 	for i, txIn := range tx.TxIn {
 		txOut := fetcherMap[txIn.PreviousOutPoint]
 		witness, err := txscript.WitnessSignature(tx, sigHashes, i, txOut.Value, txOut.PkScript, txscript.SigHashAll, key, true)
@@ -115,7 +115,7 @@ func SignTransaction(info *data.AddressInfo, transaction *data.RawSlotSweepTrans
 }
 
 func calculateVSize(tx *wire.MsgTx) float64 {
-	// Satscard use single-sig P2WPKH inputs which makes the calculation simpler
+	// Satscards use single-sig P2WPKH inputs which makes the calculation simpler
 	// Calculation found here: https://bitcoinops.org/en/tools/calc-size/
 	numInputs := uint64(len(tx.TxIn))
 	unsignedBytes := float64(tx.SerializeSizeStripped())
