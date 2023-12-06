@@ -583,7 +583,8 @@ message Utxo {
   string txid = 1;
   uint32 vout = 2;
   int64 value = 3;
-  bool isConfirmed = 4;
+  bytes pkScript = 4;
+  bool isConfirmed = 5;
 }
 
 message AddressInfo {
@@ -591,14 +592,6 @@ message AddressInfo {
   int64 confirmedBalance = 2;
   int64 unconfirmedBalance = 3;
   repeated Utxo utxos = 4;
-}
-
-message MempoolFeeRates {
-  int64 fastest = 1;
-  int64 halfHour = 2;
-  int64 hour = 3;
-  int64 economy = 4;
-  int64 minimum = 5;
 }
 
 message CreateSlotSweepRequest {
